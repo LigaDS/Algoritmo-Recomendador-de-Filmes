@@ -1,10 +1,4 @@
 import pandas as pd
-from matplotlib import pyplot as plt
-import numpy as np
-import seaborn as sns
-import plotly.express as px
-import plotly.figure_factory as ff
-import missingno as msno
 import ast
 from sklearn.preprocessing import MinMaxScaler  # Importação do MinMaxScaler
 from sklearn.neighbors import NearestNeighbors  # Importação para o KNN
@@ -120,14 +114,14 @@ def recomendar_filmes(ano_lancamento, nota_min, generos, tempo_min, top_n=5):
         for _, filme, runtime in recomendados
     ]
 
+if __name__ == "__main__":
+    
+    # Exemplo de uso: recomendando filmes
+    recomendacoes = recomendar_filmes(
+        ano_lancamento=2000, nota_min=6.5, generos=['Animation'], tempo_min=65, top_n=5
+        #adicionem os parametros seguindo este modelo; podem colocar mais generos separados por virgula
+    )
 
-# Exemplo de uso: recomendando filmes
-recomendacoes = recomendar_filmes(
-    ano_lancamento=2000, nota_min=6.5, generos=['Animation', 'Action'], tempo_min=65, top_n=5
-    #adicionem os parametros seguindo este modelo; podem colocar mais generos separados por virgula
-)
-
-# Exibe as recomendações
-for filme in recomendacoes:
-    print(f"Título: {filme['title']}, Ano: {filme['release_date']}, Duração: {filme['runtime']} min, Nota: {filme['vote_average']}")
-
+    # Exibe as recomendações
+    for filme in recomendacoes:
+        print(f"Título: {filme['title']}, Ano: {filme['release_date']}, Duração: {filme['runtime']} min, Nota: {filme['vote_average']}")
